@@ -44,7 +44,27 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
-
+    	txtResult.clear();
+    	String goal = this.txtGoals.getText();
+    	if (goal.isEmpty()) {
+    		this.txtResult.setText("Inserire un numero minimo di goal fatti per partita");
+    		return;
+    	}
+    	double x;
+    	try {
+    		x=Double.parseDouble(goal);
+    	} catch(NumberFormatException e) {
+    		this.txtResult.setText("Inseire un valore numero come numero minimo di goal per partita");
+    		return;
+    	}
+    	if (x<0) {
+    		this.txtResult.setText("Inserire un numero positivo come soglia di goal");
+    		return;
+    	}
+    	this.model.creaGrafo(x);
+    	this.txtResult.setText("GRAFO CREATO\n");
+    	this.txtResult.appendText("# Vertici: "+model.getNumVertici());
+    	this.txtResult.appendText("\n# Archi: "+model.getNumArchi());
     }
 
     @FXML

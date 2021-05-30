@@ -3,6 +3,8 @@ package it.polito.tdp.PremierLeague.model;
 public class Player {
 	Integer playerID;
 	String name;
+	Integer numPartite;
+	Integer numGoals;
 	
 	public Player(Integer playerID, String name) {
 		super();
@@ -21,6 +23,26 @@ public class Player {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Integer getNumPartite() {
+		return numPartite;
+	}
+
+	public void setNumPartite(Integer numPartite) {
+		this.numPartite = numPartite;
+	}
+
+	public Integer getNumGoals() {
+		return numGoals;
+	}
+
+	public void setNumGoals(Integer numGoals) {
+		this.numGoals = numGoals;
+	}
+	
+	public double getMediaGoal() {
+		return ((double)(numGoals)) / ((double)(numPartite)) ;
 	}
 
 	@Override
@@ -52,6 +74,7 @@ public class Player {
 	public String toString() {
 		return playerID + " - " + name;
 	}
+
 	
 	
 	
