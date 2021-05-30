@@ -7,6 +7,7 @@ package it.polito.tdp.PremierLeague;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.PremierLeague.model.BestPlayer;
 import it.polito.tdp.PremierLeague.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,12 +70,36 @@ public class FXMLController {
 
     @FXML
     void doDreamTeam(ActionEvent event) {
-
+    	this.txtResult.clear();
+    	String kString = this.txtK.getText();
+    	if(kString.isEmpty()) {
+    		this.txtResult.setText("Inserire un valore di K");
+    		return;
+    	}
+    	int k;
+    	try {
+    		k= Integer.parseInt(kString);
+    	} catch(NumberFormatException e) {
+    		this.txtResult.setText("Errore, inserire un valore numerico di K");
+    		return;
+    	}
+    	if (!model.isGrafoCreato()) {
+    		this.txtResult.setText("Errore, creare prima il grafo");
+    		return;
+    	}
+    	this.model.dreamTeam(k);
+    	this.txtResult.setText(model.stampaDreamTeam());
     }
 
     @FXML
     void doTopPlayer(ActionEvent event) {
-
+    	this.txtResult.clear();
+    	BestPlayer b = this.model.getTopPlayer();
+    	if (!model.isGrafoCreato()) {
+    		this.txtResult.setText("Prima crea il grafo");
+    		return;
+    	}
+    	this.txtResult.setText(b.toString());
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
