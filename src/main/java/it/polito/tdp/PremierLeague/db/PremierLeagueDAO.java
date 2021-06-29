@@ -53,7 +53,7 @@ public class PremierLeagueDAO {
 		 
 	}
 	
-	public void setInfoPlayer(Player p){
+	/*public void setInfoPlayer(Player p){
 		String sql="SELECT COUNT(*) AS n, SUM(Goals) AS goal "
 				+ "FROM actions "
 				+ "WHERE PlayerID=?";
@@ -72,7 +72,7 @@ public class PremierLeagueDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public List<Action> listAllActions(){
 		String sql = "SELECT * FROM Actions";
